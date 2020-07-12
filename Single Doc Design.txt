@@ -1,0 +1,127 @@
+{
+  "id": 1232,
+  "name": "Investors",
+  "createdAt": "10/10/2010",
+  "accounts": [
+    {
+      "uid": 5443,
+      "name": "Sakib",
+      "createdAt": "11/11/2011",
+      "transactions": [
+        {
+          "journalId": 3343,
+          "createdAt": "11/12/2011",
+          "debit": [
+            {
+              "uid": 5443,
+              "name": "Sakib",
+              "amount": 1000
+            }
+          ],
+          "credit": [
+            {
+              "uid": 5233,
+              "name": "Asif",
+              "amount": 500
+            },
+            {
+              "uid": 5133,
+              "name": "Asif",
+              "amount": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": 5233,
+      "name": "Asif",
+      "createdAt": "11/11/2011",
+      "transactions": [
+        {
+          "journalId": 3343,
+          "createdAt": "11/12/2011",
+          "debit": [
+            {
+              "uid": 5443,
+              "name": "Sakib",
+              "amount": 1000
+            }
+          ],
+          "credit": [
+            {
+              "uid": 5233,
+              "name": "Asif",
+              "amount": 1000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uid": 5133,
+      "name": "Rakib",
+      "createdAt": "11/11/2011",
+      "transactions": [
+        {
+          "journalId": 3343,
+          "createdAt": "11/12/2011",
+          "debit": [
+            {
+              "uid": 5443,
+              "name": "Sakib",
+              "amount": 1000
+            }
+          ],
+          "credit": [
+            {
+              "uid": 5233,
+              "name": "Asif",
+              "amount": 1000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
+
+const mongoose = require('mongoose');
+
+const Group = mongoose.Schema({
+	name: { type: String },
+	createdAt: { type: Date, default: Date.now },
+	accounts: [
+		{
+			uid: { type: String },
+			name: { type: String },
+			createdAt: { type: Date, default: Date.now },
+			transactions: [
+				{
+					journalId: { type: String },
+					createdAt: { type: Date, default: Date.now },
+					debit: [
+						{
+							uid: { type: String },
+							name: { type: String },
+							amount: { type: Number }
+						}
+					],
+					credit: [
+						{
+							uid: { type: String },
+							name: { type: String },
+							amount: { type: Number }
+						}
+					]
+				}
+			]
+		}
+	]
+});
+
+module.exports = mongoose.model('Group', Group);
